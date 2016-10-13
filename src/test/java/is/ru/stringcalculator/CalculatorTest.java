@@ -23,4 +23,19 @@ public class CalculatorTest {
 	public void testTwoNumber() {
 		assertEquals(5, Calculator.add("3,2"));
 	}
+
+	@Test
+	public void testTreeNumber() {
+		assertEquals(9, Calculator.add("3,2,4"));
+	}
+
+	@Test
+	public void testiFourNumber() {
+		assertEquals(28, Calculator.add("3,2,4,19"));
+	}
+
+	@Test
+	public void testiFiveNumber() {
+		assertEquals(50, Calculator.add("3,2,22,4,19"));
+	}
 }
