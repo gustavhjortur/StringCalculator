@@ -1,7 +1,4 @@
 *.class
-<<<<<<< HEAD
-=======
->>>>>>> 96f464710564d850da0e1031da268db73b11d830
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -11,8 +8,8 @@
 *.war
 *.ear
 
-<<<<<<< HEAD
-=======
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
->>>>>>> 96f464710564d850da0e1031da268db73b11d830
 hs_err_pid*
+
+# vim temp files
+*.swp
