@@ -16,7 +16,7 @@ public class CalculatorTest {
 
 	@Test
 	public void testOneNumber() {
-		assertEquals(3, Calculator.add("3"));
+		assertEquals(42, Calculator.add("42"));
 	}
 
 	@Test
