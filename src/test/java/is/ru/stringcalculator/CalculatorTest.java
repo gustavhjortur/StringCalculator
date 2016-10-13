@@ -15,7 +15,12 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testOneNumber1() {
+	public void testOneNumber() {
 		assertEquals(3, Calculator.add("3"));
+	}
+
+	@Test
+	public void testTwoNumber() {
+		assertEquals(5, Calculator.add("3,2"));
 	}
 }
