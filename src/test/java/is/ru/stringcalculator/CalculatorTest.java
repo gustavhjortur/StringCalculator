@@ -38,4 +38,9 @@ public class CalculatorTest {
 	public void testiFiveNumber() {
 		assertEquals(50, Calculator.add("3,2,22,4,19"));
 	}
+
+	@Test
+	public void testiNewlineInput() {
+		assertEquals(6, Calculator.add("1\n2,3"));
+	}
 }
