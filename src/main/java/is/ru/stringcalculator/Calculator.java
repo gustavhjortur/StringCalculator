@@ -1,5 +1,8 @@
 package is.ru.stringcalculator;
 
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
+
 public class Calculator {
 
 	public static int add(String text){
@@ -8,7 +11,13 @@ public class Calculator {
 		}
         text = text.replaceAll("[^-?0-9]+", ",");
         if(text.contains(",")){
-            return sum(splitNumbers(text));
+            
+            int summa = sum(splitNumbers(text));
+//            if( summa == 1 )
+//                throw new IllegalArgumentException("Negatives not allowed: -1");
+
+            return summa;
+            //return sum(splitNumbers(text));
         }
 		else
 			return Integer.parseInt(text);
@@ -21,8 +30,23 @@ public class Calculator {
     private static int sum(String[] numbers){
         int total = 0;
         for(String number : numbers){
+            if( Integer.parseInt(number) < 0 )
+                negativeNumberErrorHandler( numbers );
             total += Integer.parseInt(number);
         }
         return total;
+    }
+    static void negativeNumberErrorHandler(String[] numbers) {
+        String errorMessage = "Negatives not allowed: ";
+        int numberOfNumbers = 0;
+        for( String number : numbers ) {
+            if( Integer.parseInt(number) < 0 ) {
+                if( numberOfNumbers > 0 )
+                    errorMessage = errorMessage + ",";
+                errorMessage = errorMessage + number;
+                numberOfNumbers++;
+            }
+        }
+        throw new IllegalArgumentException(errorMessage);
     }
 }
