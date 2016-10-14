@@ -32,7 +32,9 @@ public class Calculator {
         for(String number : numbers){
             if( Integer.parseInt(number) < 0 )
                 negativeNumberErrorHandler( numbers );
-            total += Integer.parseInt(number);
+            if( Integer.parseInt(number) > 1000 ) {}
+            else
+                total += Integer.parseInt(number);
         }
         return total;
     }

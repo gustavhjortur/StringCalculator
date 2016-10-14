@@ -86,6 +86,16 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
+	@Test
+	public void testLargerThen1000_1() {
+		assertEquals(2, Calculator.add("1001,2"));
+	}
+
+	@Test
+	public void testLargerThen1000_2() {
+		assertEquals(1002, Calculator.add("1000,2"));
+	}
+
     //Exception rules start.
     @Rule
     public ExpectedException thrown= ExpectedException.none();
