@@ -5,6 +5,9 @@ import org.junit.Rule;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static junit.framework.TestCase.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class CalculatorTest {
 
@@ -96,6 +99,16 @@ public class CalculatorTest {
 		assertEquals(1002, Calculator.add("1000,2"));
 	}
 
+	@Test
+	public void testDifferentDelimiter_1() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+	public void testDifferentDelimiter_2() {
+		assertEquals(6, Calculator.add("1;2^$$%^^dfgd/3"));
+	}
+
     //Exception rules start.
     @Rule
     public ExpectedException thrown= ExpectedException.none();
@@ -108,16 +121,18 @@ public class CalculatorTest {
     @Test
     public void throwsIllegalArgumentException_1() {
         try {
-            assertEquals("Negative not allowed: -1", Calculator.add("-1,2"));
+            assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
         } catch (IllegalArgumentException e) { 
+           assertThat(e.getMessage(), is("Negatives not allowed: -1"));
         }
     }
    
     @Test
     public void throwsIllegalArgumentException_2() {
         try {
-            assertEquals("Negative not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
+            assertEquals("Negatives not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
        } catch (IllegalArgumentException e) { 
+           assertThat(e.getMessage(), is("Negatives not allowed: -4,-5"));
            //final String msg = "Negative not allowed: -4,-5";
            //Assert.fail("Test failed : " + e.getMessage());
            //assertEquals("Negative not allowed: -4,-5",  e.getMessage());
